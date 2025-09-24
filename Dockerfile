@@ -1,8 +1,8 @@
 # Stage 1: build WAR với Ant và JDK 17
 FROM openjdk:17 AS build
 
-# Cài đặt Ant
-RUN apt-get update && apt-get install -y ant
+# Cài đặt Ant (sử dụng dnf thay vì apt-get)
+RUN dnf update -y && dnf install -y ant
 
 WORKDIR /app
 COPY . .
