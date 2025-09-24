@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/BT12ex1_1_Copy_">
+  <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" maxIdle="10" maxTotal="20" maxWaitMillis="10000" name="jdbc/murach" password="12345" type="javax.sql.DataSource" url="jdbc:sqlserver://localhost:1433;databaseName=murach;encrypt=false" username="test"/>
+</Context>
