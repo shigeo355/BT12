@@ -1,5 +1,9 @@
 # Stage 1: build WAR với Ant và JDK 17
-FROM ant:latest AS build
+FROM openjdk:17 AS build
+
+# Cài đặt Ant
+RUN apt-get update && apt-get install -y ant
+
 WORKDIR /app
 COPY . .
 # Giả sử build file mặc định là build.xml
