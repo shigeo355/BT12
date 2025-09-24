@@ -1,12 +1,11 @@
 # Stage 1: build WAR với Ant và JDK 17
-FROM openjdk:17 AS build
+FROM eclipse-temurin:17 AS build
 
-# Cài đặt Ant (sử dụng dnf thay vì apt-get)
-RUN dnf update -y && dnf install -y ant
+# Cài đặt Ant trên Debian-based image
+RUN apt-get update && apt-get install -y ant
 
 WORKDIR /app
 COPY . .
-# Giả sử build file mặc định là build.xml
 RUN ant war
 
 # Stage 2: run với Tomcat 11 và JDK 17
@@ -16,7 +15,6 @@ FROM tomcat:11.0-jre17
 RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copy WAR đã build vào ROOT
-# Thử các đường dẫn phổ biến cho file WAR từ Ant
 COPY --from=build /app/dist/*.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
